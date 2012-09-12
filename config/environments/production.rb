@@ -64,4 +64,16 @@ WhaleMail::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  
+  # configure Action Mailer with GMail
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => 'smtp.gmail.com',
+	:port                 => 587, #gmail uses ports 25, 587 and 4XX
+	:domain               => 'whalemailer.fake',
+	:user_name            => 'whalemail0',
+	:password             => 'reminder',
+	:authentication       => 'plain',
+	:enable_starttle_auto => true
+  }  
 end
