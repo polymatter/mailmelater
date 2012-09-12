@@ -21,8 +21,16 @@
 	  <p>The Date format is [Year] [Month] [Day] - [Hour] : [Minute]</p>
 	  <p>I realise this is a bit clunky, but it will get better as I polish up the interface. Also, don't expect minute level accuracy. 
 	  The server is only checking for messages to send once every 10 minutes anyway</p>
-	  <p>Also, the server is in California and doesn't yet know about British Summer Time so the default time is actually an hour ago</p>
 	</div>	
+	
+	<div class="alert alert-error">
+	  <button type="button" class="close" data-dismiss="alert">x</button>
+	  <p>Due to the server being in Sunny Californi, it is ignorant of British Summer Time
+	  This means you need to specify an email <strong>one hour before</strong> you actually
+	  want the email sent</p>
+	  <p>An email that the server thinks to be sent at 10am will actually be sent at 11.</p>
+	</div>	
+	
 	<%= f.datetime_select :send_at %>
 
   </div>
@@ -54,10 +62,11 @@
 	  <h4>Email Spoofing?</h4>
 	  <br />
 	  <p>Email spoofing is when the email pretends to come from one place when it didn't. In other words, I can send you an email and it will appear in your email client as though
-	  it were a personal message from obama@whitehouse.gov</p>
+	  it were from obama@whitehouse.gov rather than from me</p>
 	  <p>This is useful if you want to make it appear your email came from somewhere other than this website, for example your personal account. Initially I was considering
-      making this a paid option, or only allow spoofing of addresses that have been verified. But its telling that most email clients don't make it easy to spoof
-	  despite being technically easy, so I'm going to talk this through before implementing it. Consider your opinions solicited </p>
+      making this a paid option, or only allow spoofing of addresses that have been verified. But its also a key tactic for phishers and spammers and any suspicion of
+	  being open those with malicious intent and this site will be shut down <strong>very</strong> fast</p> 
+	  <p>But I think its a neat feature. Consider your opinions solicited </p>
 	  <br/><div class="field">
 	    Sent from<br />
 		<input type="text" class="span4">
