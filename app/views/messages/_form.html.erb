@@ -11,23 +11,55 @@
     </div>
   <% end %>
 
+  <% # see https://github.com/Nerian/bootstrap-datepicker-rails for datepicker %>
+
+  
   <div class="field">
-    <%= f.label :send_at %><br />
-    <%= f.datetime_select :send_at %>
+    <%= f.label "When to send your message" %><br />
+	<div class="alert alert-info">
+	  <button type="button" class="close" data-dismiss="alert">x</button>
+	  <p>The Date format is [Year] [Month] [Day] - [Hour] : [Minute]</p>
+	  <p>I realise this is a bit clunky, but it will get better as I polish up the interface. Also, don't expect minute level accuracy. 
+	  The server is only checking for messages to send once every 10 minutes anyway</p>
+	  <p>Also, the server is in California and doesn't yet know about British Summer Time so the default time is actually an hour ago</p>
+	</div>	
+	<%= f.datetime_select :send_at %>
+
   </div>
   <div class="field">
-    <%= f.label :send_to %><br />
-    <%= f.text_field :send_to %>
+    <div class="input-prepend">
+	<span class="add-on">To: <i class="icon-envelope"></i></span>
+	<%= f.text_field :send_to, class: "span4" %>
+	</div>
+  </div>
+  
+  <div class="field">
+    <div class="input-prepend">
+	<span class="add-on">Subject:</span>
+    <%= f.text_field :subject, class: "span7" %>
+	</div>
   </div>
   <div class="field">
-    <%= f.label :subject %><br />
-    <%= f.text_field :subject %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
+    <%= f.label :body %>
+    <%= f.text_area :body , class: "span11" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-success" %>
   </div>
+  
 <% end %>
+
+  	<div class="alert alert-block">
+	  <button type="button" class="close" data-dismiss="alert">x</button>
+	  <h4>Email Spoofing?</h4>
+	  <br />
+	  <p>Email spoofing is when the email pretends to come from one place when it didn't. In other words, I can send you an email and it will appear in your email client as though
+	  it were a personal message from obama@whitehouse.gov</p>
+	  <p>This is useful if you want to make it appear your email came from somewhere other than this website, for example your personal account. Initially I was considering
+      making this a paid option, or only allow spoofing of addresses that have been verified. But its telling that most email clients don't make it easy to spoof
+	  despite being technically easy, so I'm going to talk this through before implementing it. Consider your opinions solicited </p>
+	  <br/><div class="field">
+	    Sent from<br />
+		<input type="text" class="span4">
+	  </div>
+	</div>	
