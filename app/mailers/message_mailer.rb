@@ -1,7 +1,8 @@
 class MessageMailer < ActionMailer::Base
   default from: "from@example.com"
   
-  def future_message
-    mail(:to => "whalemail0@gmail.com", :subject => "Test message")
+  def future_message(message)
+	@message = message
+    mail(:to => message.send_to, :subject => message.subject)
   end
 end

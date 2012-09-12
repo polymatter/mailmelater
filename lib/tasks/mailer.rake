@@ -1,4 +1,6 @@
 desc "post a test email"
 task :post_mail => :environment do
-  MessageMailer.future_message.deliver
+  puts "hi there"
+  Message.post_mail
+  puts "bye"
 end
