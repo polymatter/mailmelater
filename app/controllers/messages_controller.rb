@@ -25,7 +25,7 @@ class MessagesController < ApplicationController
   # GET /messages/new.json
   def new
     @message = Message.new
-
+	
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @message }
@@ -40,7 +40,7 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    @message = Message.new(params[:message])
+    @message = Message.new(validate(params[:message]))
 
     respond_to do |format|
       if @message.save
@@ -53,13 +53,22 @@ class MessagesController < ApplicationController
     end
   end
 
+  def validate(params)
+    collate_send_at(params)
+  end
+  
+  def collate_send_at(params)
+    send_at = params[:send_at_date].to_datetime.utc
+    params.delete_if {|k,v| k == "send_at_date"}.merge({ :send_at => send_at } )
+  end
+  
   # PUT /messages/1
   # PUT /messages/1.json
   def update
     @message = Message.find(params[:id])
 
     respond_to do |format|
-      if @message.update_attributes(params[:message])
+      if @message.update_attributes(validate(params[:message]))
         format.html { redirect_to @message, notice: 'Message was successfully updated.' }
         format.json { head :no_content }
       else
