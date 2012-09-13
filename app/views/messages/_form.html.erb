@@ -16,24 +16,10 @@
   
   <div class="field">
     <%= f.label "When to send your message" %><br />
-	<div class="alert alert-info">
-	  <button type="button" class="close" data-dismiss="alert">x</button>
-	  <p>The Date format is [Year] [Month] [Day] - [Hour] : [Minute]</p>
-	  <p>I realise this is a bit clunky, but it will get better as I polish up the interface. Also, don't expect minute level accuracy. 
-	  The server is only checking for messages to send once every 10 minutes anyway</p>
-	</div>	
-	
-	<div class="alert alert-error">
-	  <button type="button" class="close" data-dismiss="alert">x</button>
-	  <p>Due to the server being in Sunny California, it is ignorant of British Summer Time
-	  This means you need to specify an email <strong>one hour before</strong> you actually
-	  want the email sent</p>
-	  <p>An email that the server thinks to be sent at 10am will actually be sent at 11. At least this applies before BST ends in a few weeks.</p>
-	</div>	
 	
 	<div class="alert alert-block">
 	  <button type="button" class="close" data-dismiss="alert">x</button>
-	  <p>One more thing, please be aware your reminders are totally public at the moment.</p>
+	  <p>Please be aware your reminders are public at the moment.</p>
 	</div>	
 	
 	<%= f.datetime_select :send_at %>
