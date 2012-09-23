@@ -60,6 +60,9 @@ class MessagesController < ApplicationController
   def collate_send_at(params)
     d = DateTime.parse(params[:send_at_date])
 	h = params[:send_at_hour].to_i
+	# FIXME
+	# hardcode UK Summertime because after several hours I still do not understand how to do this properly
+	h = h > 0 ? h - 1 : 23
 	m = params[:send_at_minute].to_i
 	
 	send_at = Time.local(d.year, d.mon, d.mday, h, m)
