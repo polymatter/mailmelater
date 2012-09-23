@@ -33,7 +33,7 @@
 <% @messages.each do |message| %>
   <tr>
     <td><%= message.id %></td>
-    <td><%= message.send_at.ctime %></td>
+    <td><%= message.send_at.to_datetime.strftime("%v %R") %></td>
     <td><%= message.send_to %></td>
     <td><%= message.subject %></td>
     <td><pre class="pre-scrollable"><%= message.body %></pre></td>

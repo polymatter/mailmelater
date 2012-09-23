@@ -58,8 +58,13 @@ class MessagesController < ApplicationController
   end
   
   def collate_send_at(params)
-    send_at = params[:send_at_date].to_datetime.utc
-    params.delete_if {|k,v| k == "send_at_date"}.merge({ :send_at => send_at } )
+    d = DateTime.parse(params[:send_at_date])
+	h = params[:send_at_hour].to_i
+	m = params[:send_at_minute].to_i
+	
+	send_at = Time.local(d.year, d.mon, d.mday, h, m)
+	
+    params.delete_if {|k,v| k.include? "send_at"}.merge({ :send_at => send_at } )
   end
   
   # PUT /messages/1

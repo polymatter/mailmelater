@@ -20,37 +20,75 @@
   
   
   <div class="field">
-
 	<script language="javascript">
 	$(document).on("focus", "[data-behaviour~='datepicker']", function(e){
 		$(this).datepicker({"format": "dd-M-yyyy", "weekStart": 1, "autoclose": true});
 	});
 	</script>
+	<% date = @message.send_at ? @message.send_at.to_date : Time.now.to_date.next_day %>
+	<% hour = @message.send_at ? @message.send_at.hour : 9  %>
+	<% min  = @message.send_at ? @message.send_at.min / 10 : 1 %>
 	
 	<div class="input-prepend">
 	  <span class="add-on">When:</span>
 	  <input type="text" data-behaviour='datepicker' 
-	     name="message[send_at_date]"
-	     value="<%= (@message.send_at ? @message.send_at : Time.now).strftime("%d-%b-%Y") %>" >
+	     name="message[send_at_date]" class="span2"
+	     value="<%= date.strftime("%d-%b-%Y") %>" >
 	</div>
+	
+    <select name="message[send_at_hour]" class="input-small">
+	  <option value="00" <% if hour == 0%>selected="selected"<% end %>>0 (midnight)</option>
+	  <option value="01" <% if hour == 1%>selected="selected"<% end %>>1</option>
+	  <option value="02" <% if hour == 2%>selected="selected"<% end %>>2</option>
+	  <option value="03" <% if hour == 3%>selected="selected"<% end %>>3</option>
+	  <option value="04" <% if hour == 4%>selected="selected"<% end %>>4</option>
+	  <option value="05" <% if hour == 5%>selected="selected"<% end %>>5</option>
+	  <option value="06" <% if hour == 6%>selected="selected"<% end %>>6</option>
+	  <option value="07" <% if hour == 7%>selected="selected"<% end %>>7</option>
+	  <option value="08" <% if hour == 8%>selected="selected"<% end %>>8</option>
+	  <option value="09" <% if hour == 9%>selected="selected"<% end %>>9</option>
+	  <option value="10" <% if hour == 10%>selected="selected"<% end %>>10</option>
+	  <option value="11" <% if hour == 11%>selected="selected"<% end %>>11</option>
+	  <option value="12" <% if hour == 12%>selected="selected"<% end %>>12 (midday)</option>
+	  <option value="13" <% if hour == 13%>selected="selected"<% end %>>13</option>
+	  <option value="14" <% if hour == 14%>selected="selected"<% end %>>14</option>
+	  <option value="15" <% if hour == 15%>selected="selected"<% end %>>15</option>
+	  <option value="16" <% if hour == 16%>selected="selected"<% end %>>16</option>
+	  <option value="17" <% if hour == 17%>selected="selected"<% end %>>17</option>
+	  <option value="18" <% if hour == 18%>selected="selected"<% end %>>18</option>
+	  <option value="19" <% if hour == 19%>selected="selected"<% end %>>19</option>
+	  <option value="20" <% if hour == 20%>selected="selected"<% end %>>20</option>
+	  <option value="21" <% if hour == 21%>selected="selected"<% end %>>21</option>
+	  <option value="22" <% if hour == 22%>selected="selected"<% end %>>22</option>
+	  <option value="23" <% if hour == 23%>selected="selected"<% end %>>23</option>
+	</select>
+	
+	:
+	<select name="message[send_at_minute]" class="input-mini">
+	  <option value="00" <% if min == 0%>selected="selected"<% end %>>00</option>
+	  <option value="10" <% if min == 1%>selected="selected"<% end %>>10</option>
+	  <option value="20" <% if min == 2%>selected="selected"<% end %>>20</option>
+	  <option value="30" <% if min == 3%>selected="selected"<% end %>>30</option>
+	  <option value="40" <% if min == 4%>selected="selected"<% end %>>40</option>
+	  <option value="50" <% if min == 5%>selected="selected"<% end %>>50</option>
+	</select>
   </div>
-
+  
   <div class="field">
     <div class="input-prepend">
 	<span class="add-on">To: <i class="icon-envelope"></i></span>
-	<%= f.text_field :send_to, class: "span4" %>
+	<%= f.text_field :send_to, class: "input-medium" %>
 	</div>
   </div>
   
   <div class="field">
     <div class="input-prepend">
 	<span class="add-on">Subject:</span>
-    <%= f.text_field :subject, class: "span7" %>
+    <%= f.text_field :subject, class: "input-xxlarge" %>
 	</div>
   </div>
   <div class="field">
-    <%= f.label :body %>
-    <%= f.text_area :body , class: "span11" %>
+    <%= f.text_area :body , class: "input-xxlarge" %>
   </div>
   <div class="actions">
     <%= f.submit class: "btn btn-success" %>
