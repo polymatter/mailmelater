@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-WhaleMail::Application.load_tasks
+MailMeLater::Application.load_tasks
