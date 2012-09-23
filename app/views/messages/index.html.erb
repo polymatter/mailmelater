@@ -1,14 +1,13 @@
 <div class="hero-unit">
-  <h1>Send an Email Reminder </h1>
-  <p>Send emails at the appropriate time. Useful to remind yourself or others of birthdays, upcoming meetings, shopping lists etc. </p>
+  <h1>Mail Me Later </h1>
+  <p>Send emails at a set time. Useful to remind yourself or others of birthdays, upcoming meetings, shopping lists etc. </p>
+  <p>Completely registration-free</p>
   <%= link_to 'Send an Email', new_message_path, class: "btn btn-success" %>
 </div>
 
   	<div class="alert alert-info">
 	  <button type="button" class="close" data-dismiss="alert">x</button>
 	  <p>Emails will appear to be sent from a gmail account "whalemail0@gmail.com".</p>
-	  <p>I am struggling to name this email reminder app thing so if you can think of a name, preferably one that I can buy the .com domain to host it,
-	  I am all ears. At the moment its called F-mail as in Forward Mail, but I am definately open to suggestions.</p>
 	</div>	
 
   	<div class="alert alert-alert">
@@ -17,7 +16,7 @@
 	</div>	
 	
 	
-<h1>Emails already in the queue to send</h1>
+<h1>Scheduled Emails</h1>
 
 <table class="table table-striped table-bordered">
   <tr>
@@ -25,7 +24,7 @@
     <th>Send at</th>
     <th>Send to</th>
     <th>Subject</th>
-    <th>Body</th>
+    <th>Contents</th>
     <th></th>
     <th></th>
   </tr>

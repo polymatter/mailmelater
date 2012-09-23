@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Forward Mail" %></title>
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <title><%= content_for?(:title) ? yield(:title) : "Mail Me Later" %></title>
+    <meta name="description" content="to send emails at a particular date and time">
+    <meta name="author" content="github.com/polymatter">
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
@@ -31,6 +31,10 @@
           <footer>
           </footer>
         </div>
+		<div class="">
+	      <hr>
+	      <iframe src="http://githubbadge.appspot.com/badge/polymatter?s=1&a=0" style="border: 0;height: 142px;width: 200px;overflow: hidden;" frameBorder=0></iframe>
+	    </div>
       </div> <!--! end of .container -->
     </div> <!--! end of #main -->
   </body>
